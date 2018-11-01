@@ -13,6 +13,12 @@ all you need to do from there is go to the <b>Pool Info</b> tab and set up your 
 # Other Info
 When you first run the script/executable, it will create a `XMR-Stak-Helper.ini` file for all the pool and stak configurations to be save to.
 
+# Screenshots
+
+<img src="https://i.imgur.com/j3kZmCM.png">
+<img src="https://i.imgur.com/XhcWO1W.png">
+<img src="https://i.imgur.com/wmwKqN9.png">
+
 Developer Donations
 ===================
 If you'd like to make a one time donation, the addresses are as follows:
