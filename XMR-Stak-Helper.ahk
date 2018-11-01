@@ -20,7 +20,10 @@ SetWorkingDir %A_ScriptDir%  ; Ensures a consistent starting directory.
 
 IfNotExist, thepitster.jpg
 URLDownloadToFile, http://www.allripped.net/files/thepitster.jpg, thepitster.jpg
-
+IfNotExist, app.ico
+URLDownloadToFile, https://raw.githubusercontent.com/ALLRiPPED/xmr-stak-helper/master/app.ico, app.ico
+		if(FileExist(A_ScriptDir "\app.ico"))
+			Menu,Tray,Icon,app.ico
 Gui, Margin, 0,0
 Gui +LastFound
 GUI_ID:=WinExist()
