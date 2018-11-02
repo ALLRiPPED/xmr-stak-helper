@@ -281,7 +281,7 @@ Iniwrite, %pword4%, %A_ScriptDir%\XMR-Stak-Helper.ini, XMR-STAK, pword4
 Iniwrite, %nicehash4%, %A_ScriptDir%\XMR-Stak-Helper.ini, XMR-STAK, nicehash4
 Iniwrite, %coin4%, %A_ScriptDir%\XMR-Stak-Helper.ini, XMR-STAK, coin4
 Iniwrite, %htport%, %A_ScriptDir%\XMR-Stak-Helper.ini, XMR-STAK, htport
-Iniwrite, %stakdir%, %A_ScriptDir%\XMR-Stak-Helper.ini, XMR-STAK, stakdir, %A_space%
+Iniwrite, %stakdir%, %A_ScriptDir%\XMR-Stak-Helper.ini, XMR-STAK, stakdir
 Return
 
 ButtonMonero:
