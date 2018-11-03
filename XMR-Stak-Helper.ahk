@@ -1,4 +1,4 @@
-; XMR-Stak Mining Helper v0.0.1
+; XMR-Stak Mining Helper v0.0.2
 ; Just a little something I came up with to help with crypto mining with xmr-stak.
 ; 
 ; With xmr-stak.exe and this script's SHIFT+F# hotkeys with your pool login information setup correctly,
@@ -29,7 +29,7 @@ Gui +LastFound
 GUI_ID:=WinExist()
 Gui, -Caption +AlwaysOnTop +Border
 Gui, Add, Picture, , thepitster.jpg
-Gui,Show, AutoSize Hide, XMR-Stak Mining Helper v0.0.1
+Gui,Show, AutoSize Hide, XMR-Stak Mining Helper v0.0.2
 DllCall("AnimateWindow",UInt,GUI_ID,Int,500,UInt,0xa0000)
 Sleep 1000
 DllCall("AnimateWindow",UInt,GUI_ID,Int,500,UInt,0x90000)
@@ -195,15 +195,10 @@ Gui, Add, Button, x662 y300 w100 h30 gOK, OK
 Gui, Margin, 0,0
 Gui +LastFound
 GUI_ID:=WinExist()
-Gui, Show, x341 y133 h515 w847, XMR-Stak Mining Helper v0.0.1
+Gui, Show, x341 y133 h515 w847, XMR-Stak Mining Helper v0.0.2
 DllCall("AnimateWindow",UInt,GUI_ID,UInt,750,UInt,0xa0000)
 Return
 
-XButton1::
-Send {Space down} ;Hold down the Spacebar
-KeyWait XButton1 ; Wait for the user to release the 3rd mouse button.
-Send {Space up}	; Release the Spacebar.
-Return
 ButtonAbout:
 Gui, Destroy
 Gui, Margin, 0,0
@@ -211,27 +206,32 @@ Gui +LastFound
 GUI_ID:=WinExist()
 Gui, -Caption +AlwaysOnTop +Border
 Gui, Add, Picture, , thepitster.jpg
-Gui,Show,Autosize Hide,xmr-stak Helper v0.0.1
+Gui,Show,Autosize Hide,xmr-stak Helper v0.0.2
 DllCall("AnimateWindow",UInt,GUI_ID,Int,500,UInt,0xa0000)
 Sleep 3000
 DllCall("AnimateWindow",UInt,GUI_ID,Int,500,UInt,0x90000)
 Gui, Destroy
 Goto, Main
 Return
+
 GuiEscape:
 GuiClose:
   DllCall("AnimateWindow",UInt,GUI_ID,UInt,750,UInt,0x90000)
   Gui, Hide
 Return
+
+#H::
 GuiMinimize:
   DllCall("AnimateWindow",UInt,GUI_ID,UInt,750,UInt,0x90000)
   Gui, Hide
 Return
+
+#U::
 GuiShow:
 Gui, Margin, 0,0
 Gui +LastFound
 GUI_ID:=WinExist()
-Gui, Show, h515 w850, XMR-Stak Mining Helper v0.0.1
+Gui, Show, h515 w850, XMR-Stak Mining Helper v0.0.2
 DllCall("AnimateWindow",UInt,GUI_ID,UInt,750,UInt,0xa0000)
 Return
 
@@ -314,16 +314,6 @@ Return
 ButtonXMR-Stak:
 Run, https://github.com/ALLRiPPED/ar-xmr-stak/releases
 Return
-ButtonSROLoader:
-SetWorkingDir %stakdir%
-Run, %stakdir%\xmr-stak.exe
-;msgbox, SilkRoad Executed!
-Return
-ButtonTest:
-SetWorkingDir %stakdir%
-Run, %stakdir%\xmr-stak.exe
-;msgbox, Testosterone Executed!
-Return
 ButtonHideMe:
   DllCall("AnimateWindow",UInt,GUI_ID,UInt,750,UInt,0x90000)
   Gui, Hide
@@ -355,7 +345,7 @@ return
 
 +F6::
 SetWorkingDir %stakdir%
-if (nicehash1 = 0)
+if (nicehash2 = 0)
 {
 Run, %stakdir%\xmr-stak.exe -i %htport% -o %pool2% -u %address2% -r %rigid2% -p %pword2% --currency %coin2%
 msgbox, XMR-Stak Executed!
@@ -367,7 +357,7 @@ return
 
 +F7::
 SetWorkingDir %stakdir%
-if (nicehash1 = 0)
+if (nicehash3 = 0)
 {
 Run, %stakdir%\xmr-stak.exe -i %htport% -o %pool3% -u %address3% -r %rigid3% -p %pword3% --currency %coin3%
 msgbox, XMR-Stak Executed!
@@ -378,7 +368,7 @@ msgbox, XMR-Stak Using Nicehash Executed!
 return
 
 +F8::
-if (nicehash1 = 0)
+if (nicehash4 = 0)
 {
 Run, %stakdir%\xmr-stak.exe -i %htport% -o %pool4% -u %address4% -r %rigid4% -p %pword4% --currency %coin4%
 msgbox, XMR-Stak Executed!
