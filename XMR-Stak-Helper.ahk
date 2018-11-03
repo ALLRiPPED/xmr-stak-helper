@@ -322,7 +322,7 @@ ButtonClose:
 DllCall("AnimateWindow",UInt,GUI_ID,UInt,750,UInt,0x90000) 
 ExitApp
 XSHelper:
-Run, http://www.allripped.net/files/srohelper
+Run, https://github.com/ALLRiPPED/xmr-stak-helper
 Return
 XMR-Stak:
 Run, https://github.com/ALLRiPPED/ar-xmr-stak/releases
