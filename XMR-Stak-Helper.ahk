@@ -306,7 +306,7 @@ ButtonX-CASH:
 Run, https://x-cash.org/
 Return
 ButtonXSHelper:
-Run, http://www.allripped.net/files/srohelper
+Run, https://github.com/ALLRiPPED/xmr-stak-helper
 Return
 ButtonARHash:
 Run, https://arhash.xyz/
