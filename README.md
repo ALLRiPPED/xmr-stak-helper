@@ -22,10 +22,10 @@ When you first run the script/executable, it will create a `XMR-Stak-Helper.ini`
 
 # Changelog
 
-##v0.0.2
+## v0.0.2
 Fixed a few discrepancies in script, plus added a Hide (WindowsKey+H) & Unhide (Windowskey+U)
 
-##v0.0.1
+## v0.0.1
 Initial release
 
 Developer Donations
