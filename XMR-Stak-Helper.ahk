@@ -1,4 +1,4 @@
-; XMR-Stak Mining Helper v0.0.2
+; XMR-Stak Mining Helper v0.1.0
 ; Just a little something I came up with to help with crypto mining with xmr-stak.
 ; 
 ; With xmr-stak.exe and this script's SHIFT+F# hotkeys with your pool login information setup correctly,
@@ -14,10 +14,10 @@
 ;######################## DO NOT EDIT THIS SCRIPT UNLESS YOU KNOW WHAT YOUR ARE DOING! ########################
 ;####################################### THAT MEANS YOU [^_^] #################################################
 #NoEnv  ; Recommended for performance and compatibility with future AutoHotkey releases.
+;#Warn  ; Enable warnings to assist with detecting common errors.
 SendMode Input  ; Recommended for new scripts due to its superior speed and reliability.
 SetWorkingDir %A_ScriptDir%  ; Ensures a consistent starting directory.
 #SingleInstance force
-
 IfNotExist, thepitster.jpg
 URLDownloadToFile, http://www.allripped.net/files/thepitster.jpg, thepitster.jpg
 IfNotExist, app.ico
@@ -29,7 +29,7 @@ Gui +LastFound
 GUI_ID:=WinExist()
 Gui, -Caption +AlwaysOnTop +Border
 Gui, Add, Picture, , thepitster.jpg
-Gui,Show, AutoSize Hide, XMR-Stak Mining Helper v0.0.2
+Gui,Show, AutoSize Hide, XMR-Stak Mining Helper v0.1.0
 DllCall("AnimateWindow",UInt,GUI_ID,Int,500,UInt,0xa0000)
 Sleep 1000
 DllCall("AnimateWindow",UInt,GUI_ID,Int,500,UInt,0x90000)
@@ -82,7 +82,6 @@ Menu, Tray, Add, &Reload Helper, TrayReload
 Menu, Tray, Add
 Menu, Tray, Add, &Edit Script, TrayEdit
 Menu, Tray, Add
-Menu, Tray, Add, E&xit, TrayExit
 Menu, Tray, Default, Show
 Menu, Tray, Click, 1
 Menu, Tray, NoStandard
@@ -195,63 +194,166 @@ Gui, Add, Button, x662 y300 w100 h30 gOK, OK
 Gui, Margin, 0,0
 Gui +LastFound
 GUI_ID:=WinExist()
-Gui, Show, x341 y133 h515 w847, XMR-Stak Mining Helper v0.0.2
+Gui, Show, x341 y133 h515 w847, XMR-Stak Mining Helper v0.1.0
 DllCall("AnimateWindow",UInt,GUI_ID,UInt,750,UInt,0xa0000)
-Return
+;############################## HIDDEN WINDOWS MOD ##############################
+mwt_MaxWindows = 50
+mwt_Hotkey = #h  ; Win+H
+mwt_UnHotkey = #u  ; Win+U
+mwt_StandardMenu = N
+#HotkeyModifierTimeout 100
+SetWinDelay 10
+SetKeyDelay 0
+Hotkey, %mwt_Hotkey%, mwt_Minimize
+Hotkey, %mwt_UnHotkey%, mwt_UnMinimize
 
-ButtonAbout:
-Gui, Destroy
-Gui, Margin, 0,0
-Gui +LastFound
-GUI_ID:=WinExist()
-Gui, -Caption +AlwaysOnTop +Border
-Gui, Add, Picture, , thepitster.jpg
-Gui,Show,Autosize Hide,xmr-stak Helper v0.0.2
-DllCall("AnimateWindow",UInt,GUI_ID,Int,500,UInt,0xa0000)
-Sleep 3000
-DllCall("AnimateWindow",UInt,GUI_ID,Int,500,UInt,0x90000)
-Gui, Destroy
-Goto, Main
-Return
+OnExit, mwt_RestoreAllThenExit
 
-GuiEscape:
-GuiClose:
-  DllCall("AnimateWindow",UInt,GUI_ID,UInt,750,UInt,0x90000)
-  Gui, Hide
-Return
+if mwt_StandardMenu = Y
+    Menu, Tray, Add
+else
+{
+    Menu, Tray, NoStandard
+    Menu, Tray, Add, E&xit and Unhide All, mwt_RestoreAllThenExit
+}
+Menu, Tray, Add, &Unhide All Hidden Windows, mwt_RestoreAll
+Menu, Tray, Add  ; Another separator line to make the above more special.
 
-#H::
-GuiMinimize:
-  DllCall("AnimateWindow",UInt,GUI_ID,UInt,750,UInt,0x90000)
-  Gui, Hide
-Return
+if A_AhkVersion =   ; Since it's blank, version is older than 1.0.22.
+    mwt_MaxLength = 100
+else
+    mwt_MaxLength = 260  ; Reduce this to restrict the width of the menu.
+return  ; End of auto-execute section.
 
-#U::
-GuiShow:
-Gui, Margin, 0,0
-Gui +LastFound
-GUI_ID:=WinExist()
-Gui, Show, h515 w850, XMR-Stak Mining Helper v0.0.2
-DllCall("AnimateWindow",UInt,GUI_ID,UInt,750,UInt,0xa0000)
-Return
+mwt_Minimize:
+if mwt_WindowCount >= %mwt_MaxWindows%
+{
+    MsgBox No more than %mwt_MaxWindows% may be hidden simultaneously.
+    return
+}
 
-;### TRAY MODS ############################################################################################################
-TrayReload:
-Reload
-Return
-TrayEdit:
-Run, C:\Program Files\Notepad++\notepad++.exe %A_ScriptDir%\%A_ScriptName%
-Return
-TrayEditini:
-Run, C:\Program Files\Notepad++\notepad++.exe %A_ScriptDir%\XMR-Stak-Helper.ini
-Return
-TrayExit:
-Exitapp
-Return
-ButtonBrowse:
-Gui, Submit, NoHide
-FileSelectFolder, stakdir
-Iniwrite, %stakdir%, %A_ScriptDir%\XMR-Stak-Helper.ini, XMR-STAK, stakdir
+WinWait, A,, 2
+if ErrorLevel <> 0  ; It timed out, so do nothing.
+    return
+
+WinGet, mwt_ActiveID, ID
+WinGetTitle, mwt_ActiveTitle
+WinGetClass, mwt_ActiveClass
+if mwt_ActiveClass in Shell_TrayWnd,Progman
+{
+    MsgBox The desktop and taskbar cannot be hidden.
+    return
+}
+Send, !{esc}
+WinHide
+
+if mwt_ActiveTitle =
+    mwt_ActiveTitle = ahk_class %mwt_ActiveClass%
+
+StringLeft, mwt_ActiveTitle, mwt_ActiveTitle, %mwt_MaxLength%
+
+Loop, %mwt_MaxWindows%
+{
+    if mwt_WindowTitle%A_Index% = %mwt_ActiveTitle%
+    {
+        StringTrimLeft, mwt_ActiveIDShort, mwt_ActiveID, 2
+        StringLen, mwt_ActiveIDShortLength, mwt_ActiveIDShort
+        StringLen, mwt_ActiveTitleLength, mwt_ActiveTitle
+        mwt_ActiveTitleLength += %mwt_ActiveIDShortLength%
+        mwt_ActiveTitleLength += 1 ; +1 the 1 space between title & ID.
+        if mwt_ActiveTitleLength > %mwt_MaxLength%
+        {
+            TrimCount = %mwt_ActiveTitleLength%
+            TrimCount -= %mwt_MaxLength%
+            StringTrimRight, mwt_ActiveTitle, mwt_ActiveTitle, %TrimCount%
+        }
+        mwt_ActiveTitle = %mwt_ActiveTitle% %mwt_ActiveIDShort%
+        break
+    }
+}
+
+mwt_AlreadyExists = n
+Loop, %mwt_MaxWindows%
+{
+    if mwt_WindowID%A_Index% = %mwt_ActiveID%
+    {
+        mwt_AlreadyExists = y
+        break
+    }
+}
+
+if mwt_AlreadyExists = n
+{
+    Menu, Tray, add, %mwt_ActiveTitle%, RestoreFromTrayMenu
+    mwt_WindowCount += 1
+    Loop, %mwt_MaxWindows%  ; Search for a free slot.
+    {
+        ; It should always find a free slot if things are designed right.
+        if mwt_WindowID%A_Index% =  ; An empty slot was found.
+        {
+            mwt_WindowID%A_Index% = %mwt_ActiveID%
+            mwt_WindowTitle%A_Index% = %mwt_ActiveTitle%
+            break
+        }
+    }
+}
+return
+
+RestoreFromTrayMenu:
+Menu, Tray, delete, %A_ThisMenuItem%
+
+Loop, %mwt_MaxWindows%
+{
+    if mwt_WindowTitle%A_Index% = %A_ThisMenuItem%  ; Match found.
+    {
+        StringTrimRight, IDToRestore, mwt_WindowID%A_Index%, 0
+        WinShow, ahk_id %IDToRestore%
+        WinActivate ahk_id %IDToRestore%  ; Sometimes needed.
+        mwt_WindowID%A_Index% =  ; Make it blank to free up a slot.
+        mwt_WindowTitle%A_Index% =
+        mwt_WindowCount -= 1
+        break
+    }
+}
+return
+
+mwt_UnMinimize:
+if mwt_WindowCount > 0 
+{
+    StringTrimRight, IDToRestore, mwt_WindowID%mwt_WindowCount%, 0
+    WinShow, ahk_id %IDToRestore%
+    WinActivate ahk_id %IDToRestore%
+    StringTrimRight, MenuToRemove, mwt_WindowTitle%mwt_WindowCount%, 0
+    Menu, Tray, delete, %MenuToRemove%
+    mwt_WindowID%mwt_WindowCount% =
+    mwt_WindowTitle%mwt_WindowCount% = 
+    mwt_WindowCount -= 1
+}
+return
+
+mwt_RestoreAllThenExit:
+Gosub, mwt_RestoreAll
+ExitApp  ; Do a true exit.
+
+mwt_RestoreAll:
+Loop, %mwt_MaxWindows%
+{
+    if mwt_WindowID%A_Index% <>
+    {
+        StringTrimRight, IDToRestore, mwt_WindowID%A_Index%, 0
+        WinShow, ahk_id %IDToRestore%
+        WinActivate ahk_id %IDToRestore%  ; Sometimes needed.
+        StringTrimRight, MenuToRemove, mwt_WindowTitle%A_Index%, 0
+        Menu, Tray, delete, %MenuToRemove%
+        mwt_WindowID%A_Index% =  ; Make it blank to free up a slot.
+        mwt_WindowTitle%A_Index% =
+        mwt_WindowCount -= 1
+    }
+    if mwt_WindowCount = 0
+        break
+}
+return
+;############################## HIDDEN WINDOWS MOD ##############################
 Return
 
 OK:
@@ -283,7 +385,54 @@ Iniwrite, %coin4%, %A_ScriptDir%\XMR-Stak-Helper.ini, XMR-STAK, coin4
 Iniwrite, %htport%, %A_ScriptDir%\XMR-Stak-Helper.ini, XMR-STAK, htport
 Iniwrite, %stakdir%, %A_ScriptDir%\XMR-Stak-Helper.ini, XMR-STAK, stakdir
 Return
-
+ButtonAbout:
+Gui, Destroy
+Gui, Margin, 0,0
+Gui +LastFound
+GUI_ID:=WinExist()
+Gui, -Caption +AlwaysOnTop +Border
+Gui, Add, Picture, , thepitster.jpg
+Gui,Show,Autosize Hide,xmr-stak Helper v0.1.0
+DllCall("AnimateWindow",UInt,GUI_ID,Int,500,UInt,0xa0000)
+Sleep 3000
+DllCall("AnimateWindow",UInt,GUI_ID,Int,500,UInt,0x90000)
+Gui, Destroy
+Goto, Main
+Return
+GuiEscape:
+GuiClose:
+  DllCall("AnimateWindow",UInt,GUI_ID,UInt,750,UInt,0x90000)
+  Gui, Hide
+Return
+GuiMinimize:
+  DllCall("AnimateWindow",UInt,GUI_ID,UInt,750,UInt,0x90000)
+  Gui, Hide
+Return
+GuiShow:
+Gui, Margin, 0,0
+Gui +LastFound
+GUI_ID:=WinExist()
+Gui, Show, h515 w850, XMR-Stak Mining Helper v0.1.0
+DllCall("AnimateWindow",UInt,GUI_ID,UInt,750,UInt,0xa0000)
+Return
+#X::
+Gui % (MainGui:=!MainGui) ? "Hide" : "Show"
+return
+TrayReload:
+Reload
+Return
+TrayEdit:
+Run, C:\Program Files\Notepad++\notepad++.exe %A_ScriptDir%\%A_ScriptName%
+Return
+TrayEditini:
+Run, C:\Program Files\Notepad++\notepad++.exe %A_ScriptDir%\XMR-Stak-Helper.ini
+Return
+Return
+ButtonBrowse:
+Gui, Submit, NoHide
+FileSelectFolder, stakdir
+Iniwrite, %stakdir%, %A_ScriptDir%\XMR-Stak-Helper.ini, XMR-STAK, stakdir
+Return
 ButtonMonero:
 Run, https://getmonero.org/
 Return
