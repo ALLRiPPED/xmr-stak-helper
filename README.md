@@ -24,7 +24,7 @@ When you first run the script/executable, it will create a `XMR-Stak-Helper.ini`
 
 ## v0.1.0
 Changed the Hide/Unhide Gui Hotkey to `WindowsKey+X` which will both hide and unhide the Helper.
-Added a window hider in script for hiding windows (like `xmr-stak.exe`) the Hotkeys to Hide 'WindowsKey+H` & Unhide `WindowsKey+U`
+Added a window hider in script for hiding windows (like `xmr-stak.exe`) the Hotkeys to Hide 'WindowsKey+H` and Unhide `WindowsKey+U`
 
 ## v0.0.2
 Fixed a few discrepancies in script, plus added a Hide `WindowsKey+H` & Unhide `Windowskey+U` functions.
