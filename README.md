@@ -1,4 +1,4 @@
-# XMR-Stak Helper v0.0.2
+# XMR-Stak Helper v0.1.0
 
 This was originally an idea I had for logging into the Silkroad Online server using the Bot369 bot cards to quickley login your game character(s) and your botcard in the presssing of just two keys.
 
@@ -22,8 +22,12 @@ When you first run the script/executable, it will create a `XMR-Stak-Helper.ini`
 
 # Changelog
 
+## v0.1.0
+Changed the Hide/Unhide Gui Hotkey to `WindowsKey+X` which will both hide and unhide the Helper.
+Added a window hider in script for hiding windows (like `xmr-stak.exe`) the Hotkeys to Hide 'WindowsKey+H` & Unhide `WindowsKey+U`
+
 ## v0.0.2
-Fixed a few discrepancies in script, plus added a Hide (WindowsKey+H) & Unhide (Windowskey+U)
+Fixed a few discrepancies in script, plus added a Hide `WindowsKey+H` & Unhide `Windowskey+U` functions.
 
 ## v0.0.1
 Initial release
