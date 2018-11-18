@@ -1,4 +1,4 @@
-; XMR-Stak Mining Helper v0.1.0
+; XMR-Stak Mining Helper v0.2.0
 ; Just a little something I came up with to help with crypto mining with xmr-stak.
 ; 
 ; With xmr-stak.exe and this script's SHIFT+F# hotkeys with your pool login information setup correctly,
@@ -14,7 +14,7 @@
 ;######################## DO NOT EDIT THIS SCRIPT UNLESS YOU KNOW WHAT YOUR ARE DOING! ########################
 ;####################################### THAT MEANS YOU [^_^] #################################################
 #NoEnv  ; Recommended for performance and compatibility with future AutoHotkey releases.
-;#Warn  ; Enable warnings to assist with detecting common errors.
+; #Warn  ; Enable warnings to assist with detecting common errors.
 SendMode Input  ; Recommended for new scripts due to its superior speed and reliability.
 SetWorkingDir %A_ScriptDir%  ; Ensures a consistent starting directory.
 #SingleInstance force
@@ -29,7 +29,7 @@ Gui +LastFound
 GUI_ID:=WinExist()
 Gui, -Caption +AlwaysOnTop +Border
 Gui, Add, Picture, , thepitster.jpg
-Gui,Show, AutoSize Hide, XMR-Stak Mining Helper v0.1.0
+Gui,Show, AutoSize Hide, XMR-Stak Mining Helper v0.2.0
 DllCall("AnimateWindow",UInt,GUI_ID,Int,500,UInt,0xa0000)
 Sleep 1000
 DllCall("AnimateWindow",UInt,GUI_ID,Int,500,UInt,0x90000)
@@ -43,6 +43,9 @@ IfNotExist, XMR-Stak-Helper.ini
  Fileappend, rigid1=Rig ID`r`n,%A_ScriptDir%\XMR-Stak-Helper.ini
  Fileappend, pword1=Password`r`n,%A_ScriptDir%\XMR-Stak-Helper.ini
  Fileappend, nicehash1=0`r`n,%A_ScriptDir%\XMR-Stak-Helper.ini
+ Fileappend, nocpu1=0`r`n,%A_ScriptDir%\XMR-Stak-Helper.ini
+ Fileappend, noamd1=0`r`n,%A_ScriptDir%\XMR-Stak-Helper.ini
+ Fileappend, nonvidia1=0`r`n,%A_ScriptDir%\XMR-Stak-Helper.ini
  Fileappend, coin1=monero`r`n,%A_ScriptDir%\XMR-Stak-Helper.ini
  Fileappend, `r`n,%A_ScriptDir%\XMR-Stak-Helper.ini
  Fileappend, pool2=Pool Host/IP:Port`r`n,%A_ScriptDir%\XMR-Stak-Helper.ini
@@ -50,6 +53,9 @@ IfNotExist, XMR-Stak-Helper.ini
  Fileappend, rigid2=Rig ID`r`n,%A_ScriptDir%\XMR-Stak-Helper.ini
  Fileappend, pword2=Password`r`n,%A_ScriptDir%\XMR-Stak-Helper.ini
  Fileappend, nicehash2=0`r`n,%A_ScriptDir%\XMR-Stak-Helper.ini
+ Fileappend, nocpu2=0`r`n,%A_ScriptDir%\XMR-Stak-Helper.ini
+ Fileappend, noamd2=0`r`n,%A_ScriptDir%\XMR-Stak-Helper.ini
+ Fileappend, nonvidia2=0`r`n,%A_ScriptDir%\XMR-Stak-Helper.ini
  Fileappend, coin2=monero`r`n,%A_ScriptDir%\XMR-Stak-Helper.ini
  Fileappend, `r`n,%A_ScriptDir%\XMR-Stak-Helper.ini
  Fileappend, pool3=Pool Host/IP:Port`r`n,%A_ScriptDir%\XMR-Stak-Helper.ini
@@ -57,6 +63,9 @@ IfNotExist, XMR-Stak-Helper.ini
  Fileappend, rigid3=Rig ID`r`n,%A_ScriptDir%\XMR-Stak-Helper.ini
  Fileappend, pword3=Password`r`n,%A_ScriptDir%\XMR-Stak-Helper.ini
  Fileappend, nicehash3=0`r`n,%A_ScriptDir%\XMR-Stak-Helper.ini
+ Fileappend, nocpu3=0`r`n,%A_ScriptDir%\XMR-Stak-Helper.ini
+ Fileappend, noamd3=0`r`n,%A_ScriptDir%\XMR-Stak-Helper.ini
+ Fileappend, nonvidia3=0`r`n,%A_ScriptDir%\XMR-Stak-Helper.ini
  Fileappend, coin3=monero`r`n,%A_ScriptDir%\XMR-Stak-Helper.ini
  Fileappend, `r`n,%A_ScriptDir%\XMR-Stak-Helper.ini
  Fileappend, pool4=Pool Host/IP:Port`r`n,%A_ScriptDir%\XMR-Stak-Helper.ini
@@ -64,6 +73,9 @@ IfNotExist, XMR-Stak-Helper.ini
  Fileappend, rigid4=Rig ID`r`n,%A_ScriptDir%\XMR-Stak-Helper.ini
  Fileappend, pword4=Password`r`n,%A_ScriptDir%\XMR-Stak-Helper.ini
  Fileappend, nicehash4=0`r`n,%A_ScriptDir%\XMR-Stak-Helper.ini
+ Fileappend, nocpu4=0`r`n,%A_ScriptDir%\XMR-Stak-Helper.ini
+ Fileappend, noamd4=0`r`n,%A_ScriptDir%\XMR-Stak-Helper.ini
+ Fileappend, nonvidia4=0`r`n,%A_ScriptDir%\XMR-Stak-Helper.ini
  Fileappend, coin4=monero`r`n,%A_ScriptDir%\XMR-Stak-Helper.ini
  Fileappend, `r`n,%A_ScriptDir%\XMR-Stak-Helper.ini
  Fileappend, htport=43000`r`n,%A_ScriptDir%\XMR-Stak-Helper.ini
@@ -91,24 +103,36 @@ IniRead, address1, %A_ScriptDir%\XMR-Stak-Helper.ini, XMR-STAK, address1, %A_spa
 IniRead, rigid1, %A_ScriptDir%\XMR-Stak-Helper.ini, XMR-STAK, rigid1, %A_space%
 IniRead, pword1, %A_ScriptDir%\XMR-Stak-Helper.ini, XMR-STAK, pword1, %A_space%
 IniRead, nicehash1, %A_ScriptDir%\XMR-Stak-Helper.ini, XMR-STAK, nicehash1, %A_space%
+IniRead, nocpu1, %A_ScriptDir%\XMR-Stak-Helper.ini, XMR-STAK, nocpu1, %A_space%
+IniRead, noamd1, %A_ScriptDir%\XMR-Stak-Helper.ini, XMR-STAK, noamd1, %A_space%
+IniRead, nonvidia1, %A_ScriptDir%\XMR-Stak-Helper.ini, XMR-STAK, nonvidia1, %A_space%
 IniRead, coin1, %A_ScriptDir%\XMR-Stak-Helper.ini, XMR-STAK, coin1, %A_space%
 IniRead, pool2, %A_ScriptDir%\XMR-Stak-Helper.ini, XMR-STAK, pool2, %A_space%
 IniRead, address2, %A_ScriptDir%\XMR-Stak-Helper.ini, XMR-STAK, address2, %A_space%
 IniRead, rigid2, %A_ScriptDir%\XMR-Stak-Helper.ini, XMR-STAK, rigid2, %A_space%
 IniRead, pword2, %A_ScriptDir%\XMR-Stak-Helper.ini, XMR-STAK, pword2, %A_space%
 IniRead, nicehash2, %A_ScriptDir%\XMR-Stak-Helper.ini, XMR-STAK, nicehash2, %A_space%
+IniRead, nocpu2, %A_ScriptDir%\XMR-Stak-Helper.ini, XMR-STAK, nocpu2, %A_space%
+IniRead, noamd2, %A_ScriptDir%\XMR-Stak-Helper.ini, XMR-STAK, noamd2, %A_space%
+IniRead, nonvidia2, %A_ScriptDir%\XMR-Stak-Helper.ini, XMR-STAK, nonvidia2, %A_space%
 IniRead, coin2, %A_ScriptDir%\XMR-Stak-Helper.ini, XMR-STAK, coin2, %A_space%
 IniRead, pool3, %A_ScriptDir%\XMR-Stak-Helper.ini, XMR-STAK, pool3, %A_space%
 IniRead, address3, %A_ScriptDir%\XMR-Stak-Helper.ini, XMR-STAK, address3, %A_space%
 IniRead, rigid3, %A_ScriptDir%\XMR-Stak-Helper.ini, XMR-STAK, rigid3, %A_space%
 IniRead, pword3, %A_ScriptDir%\XMR-Stak-Helper.ini, XMR-STAK, pword3, %A_space%
 IniRead, nicehash3, %A_ScriptDir%\XMR-Stak-Helper.ini, XMR-STAK, nicehash3, %A_space%
+IniRead, nocpu3, %A_ScriptDir%\XMR-Stak-Helper.ini, XMR-STAK, nocpu3, %A_space%
+IniRead, noamd3, %A_ScriptDir%\XMR-Stak-Helper.ini, XMR-STAK, noamd3, %A_space%
+IniRead, nonvidia3, %A_ScriptDir%\XMR-Stak-Helper.ini, XMR-STAK, nonvidia3, %A_space%
 IniRead, coin3, %A_ScriptDir%\XMR-Stak-Helper.ini, XMR-STAK, coin3, %A_space%
 IniRead, pool4, %A_ScriptDir%\XMR-Stak-Helper.ini, XMR-STAK, pool4, %A_space%
 IniRead, address4, %A_ScriptDir%\XMR-Stak-Helper.ini, XMR-STAK, address4, %A_space%
 IniRead, rigid4, %A_ScriptDir%\XMR-Stak-Helper.ini, XMR-STAK, rigid4, %A_space%
 IniRead, pword4, %A_ScriptDir%\XMR-Stak-Helper.ini, XMR-STAK, pword4, %A_space%
 IniRead, nicehash4, %A_ScriptDir%\XMR-Stak-Helper.ini, XMR-STAK, nicehash4, %A_space%
+IniRead, nocpu4, %A_ScriptDir%\XMR-Stak-Helper.ini, XMR-STAK, nocpu4, %A_space%
+IniRead, noamd4, %A_ScriptDir%\XMR-Stak-Helper.ini, XMR-STAK, noamd4, %A_space%
+IniRead, nonvidia4, %A_ScriptDir%\XMR-Stak-Helper.ini, XMR-STAK, nonvidia4, %A_space%
 IniRead, coin4, %A_ScriptDir%\XMR-Stak-Helper.ini, XMR-STAK, coin4, %A_space%
 IniRead, htport, %A_ScriptDir%\XMR-Stak-Helper.ini, XMR-STAK, htport, %A_space%
 IniRead, stakdir, %A_ScriptDir%\XMR-Stak-Helper.ini, XMR-STAK, stakdir, %A_space%
@@ -133,6 +157,9 @@ Gui, Add, Text, x32 y30 w780 h310 , Just a little something I came up with to he
 Gui, Tab, Pool Info
 Gui, Add, Text, x12 y30 w70 h20 , Mining Pool 1:
 Gui, Add, CheckBox, x82 y30 w90 h20 vnicehash1, Use Nicehash
+Gui, Add, CheckBox, x182 y30 w60 h20 vnocpu1, noCPU
+Gui, Add, CheckBox, x252 y30 w60 h20 vnoamd1, noAMD
+Gui, Add, CheckBox, x312 y30 w70 h20 vnonvidia1, noNVIDIA
 Gui, Add, Text, x12 y50 w60 h20 , Pool 1:
 Gui, Add, Edit, x72 y50 w310 h20 vpool1, %pool1%
 Gui, Add, Edit, x72 y70 w310 h20 vaddress1, %address1%
@@ -145,6 +172,9 @@ Gui, Add, Text, x12 y130 w60 h20 , Currency 1:
 Gui, Add, Edit, x72 y130 w310 h20 vcoin1, %coin1%
 Gui, Add, Text, x422 y30 w70 h20 , Mining Pool 2:
 Gui, Add, CheckBox, x492 y30 w90 h20 vnicehash2, Use Nicehash
+Gui, Add, CheckBox, x592 y30 w60 h20 vnocpu2, noCPU
+Gui, Add, CheckBox, x662 y30 w60 h20 vnoamd2, noAMD
+Gui, Add, CheckBox, x722 y30 w70 h20 vnonvidia2, noNVIDIA
 Gui, Add, Text, x422 y50 w60 h20 , Pool 2:
 Gui, Add, Edit, x482 y50 w310 h20 vpool2, %pool2%
 Gui, Add, Text, x422 y70 w60 h20 , Wallet 2:
@@ -157,6 +187,9 @@ Gui, Add, Text, x422 y130 w60 h20 , Currency 2:
 Gui, Add, Edit, x482 y130 w310 h20 vcoin2, %coin2%
 Gui, Add, Text, x12 y160 w70 h20 , Mining Pool 3:
 Gui, Add, CheckBox, x82 y160 w90 h20 vnicehash3, Use Nicehash
+Gui, Add, CheckBox, x592 y160 w60 h20 vnocpu3, noCPU
+Gui, Add, CheckBox, x252 y160 w60 h20 vnoamd3, noAMD
+Gui, Add, CheckBox, x312 y160 w70 h20 vnonvidia3, noNVIDIA
 Gui, Add, Text, x12 y180 w60 h20 , Pool 3:
 Gui, Add, Edit, x72 y180 w310 h20 vpool3, %pool3%
 Gui, Add, Text, x12 y200 w60 h20 , Wallet 3:
@@ -169,6 +202,9 @@ Gui, Add, Text, x12 y260 w60 h20 , Currency 3:
 Gui, Add, Edit, x72 y260 w310 h20 vcoin3, %coin3%
 Gui, Add, Text, x422 y160 w70 h20 , Mining Pool 4:
 Gui, Add, CheckBox, x492 y160 w90 h20 vnicehash4, Use Nicehash
+Gui, Add, CheckBox, x182 y160 w60 h20 vnocpu4, noCPU
+Gui, Add, CheckBox, x662 y160 w60 h20 vnoamd4, noAMD
+Gui, Add, CheckBox, x722 y160 w70 h20 vnonvidia4, noNVIDIA
 Gui, Add, Text, x422 y180 w60 h20 , Pool 4:
 Gui, Add, Edit, x482 y180 w310 h20 vpool4, %pool4%
 Gui, Add, Text, x422 y200 w60 h20 , Wallet 4:
@@ -194,7 +230,7 @@ Gui, Add, Button, x662 y300 w100 h30 gOK, OK
 Gui, Margin, 0,0
 Gui +LastFound
 GUI_ID:=WinExist()
-Gui, Show, x341 y133 h515 w847, XMR-Stak Mining Helper v0.1.0
+Gui, Show, x341 y133 h515 w847, XMR-Stak Mining Helper v0.2.0
 DllCall("AnimateWindow",UInt,GUI_ID,UInt,750,UInt,0xa0000)
 ;############################## HIDDEN WINDOWS MOD ##############################
 mwt_MaxWindows = 50
@@ -363,27 +399,38 @@ Iniwrite, %address1%, %A_ScriptDir%\XMR-Stak-Helper.ini, XMR-STAK, address1
 Iniwrite, %rigid1%, %A_ScriptDir%\XMR-Stak-Helper.ini, XMR-STAK, rigid1
 Iniwrite, %pword1%, %A_ScriptDir%\XMR-Stak-Helper.ini, XMR-STAK, pword1
 Iniwrite, %nicehash1%, %A_ScriptDir%\XMR-Stak-Helper.ini, XMR-STAK, nicehash1
+Iniwrite, %nocpu1%, %A_ScriptDir%\XMR-Stak-Helper.ini, XMR-STAK, nocpu1
+Iniwrite, %noamd1%, %A_ScriptDir%\XMR-Stak-Helper.ini, XMR-STAK, noamd1
+Iniwrite, %nonvidia1%, %A_ScriptDir%\XMR-Stak-Helper.ini, XMR-STAK, nonvidia1
 Iniwrite, %coin1%, %A_ScriptDir%\XMR-Stak-Helper.ini, XMR-STAK, coin1
 Iniwrite, %pool2%, %A_ScriptDir%\XMR-Stak-Helper.ini, XMR-STAK, pool2
 Iniwrite, %address2%, %A_ScriptDir%\XMR-Stak-Helper.ini, XMR-STAK, address2
 Iniwrite, %rigid2%, %A_ScriptDir%\XMR-Stak-Helper.ini, XMR-STAK, rigid2
 Iniwrite, %pword2%, %A_ScriptDir%\XMR-Stak-Helper.ini, XMR-STAK, pword2
 Iniwrite, %nicehash2%, %A_ScriptDir%\XMR-Stak-Helper.ini, XMR-STAK, nicehash2
+Iniwrite, %nocpu2%, %A_ScriptDir%\XMR-Stak-Helper.ini, XMR-STAK, nocpu2
+Iniwrite, %noamd2%, %A_ScriptDir%\XMR-Stak-Helper.ini, XMR-STAK, noamd2
+Iniwrite, %nonvidia2%, %A_ScriptDir%\XMR-Stak-Helper.ini, XMR-STAK, nonvidia2
 Iniwrite, %coin2%, %A_ScriptDir%\XMR-Stak-Helper.ini, XMR-STAK, coin2
 Iniwrite, %pool3%, %A_ScriptDir%\XMR-Stak-Helper.ini, XMR-STAK, pool3
 Iniwrite, %address3%, %A_ScriptDir%\XMR-Stak-Helper.ini, XMR-STAK, address3
 Iniwrite, %rigid3%, %A_ScriptDir%\XMR-Stak-Helper.ini, XMR-STAK, rigid3
 Iniwrite, %pword3%, %A_ScriptDir%\XMR-Stak-Helper.ini, XMR-STAK, pword3
 Iniwrite, %nicehash3%, %A_ScriptDir%\XMR-Stak-Helper.ini, XMR-STAK, nicehash3
+Iniwrite, %nocpu3%, %A_ScriptDir%\XMR-Stak-Helper.ini, XMR-STAK, nocpu3
+Iniwrite, %noamd3%, %A_ScriptDir%\XMR-Stak-Helper.ini, XMR-STAK, noamd3
+Iniwrite, %nonvidia3%, %A_ScriptDir%\XMR-Stak-Helper.ini, XMR-STAK, nonvidia3
 Iniwrite, %coin3%, %A_ScriptDir%\XMR-Stak-Helper.ini, XMR-STAK, coin3
 Iniwrite, %pool4%, %A_ScriptDir%\XMR-Stak-Helper.ini, XMR-STAK, pool4
 Iniwrite, %address4%, %A_ScriptDir%\XMR-Stak-Helper.ini, XMR-STAK, address4
 Iniwrite, %rigid4%, %A_ScriptDir%\XMR-Stak-Helper.ini, XMR-STAK, rigid4
 Iniwrite, %pword4%, %A_ScriptDir%\XMR-Stak-Helper.ini, XMR-STAK, pword4
 Iniwrite, %nicehash4%, %A_ScriptDir%\XMR-Stak-Helper.ini, XMR-STAK, nicehash4
+Iniwrite, %nocpu4%, %A_ScriptDir%\XMR-Stak-Helper.ini, XMR-STAK, nocpu4
+Iniwrite, %noamd4%, %A_ScriptDir%\XMR-Stak-Helper.ini, XMR-STAK, noamd4
+Iniwrite, %nonvidia4%, %A_ScriptDir%\XMR-Stak-Helper.ini, XMR-STAK, nonvidia4
 Iniwrite, %coin4%, %A_ScriptDir%\XMR-Stak-Helper.ini, XMR-STAK, coin4
 Iniwrite, %htport%, %A_ScriptDir%\XMR-Stak-Helper.ini, XMR-STAK, htport
-Iniwrite, %stakdir%, %A_ScriptDir%\XMR-Stak-Helper.ini, XMR-STAK, stakdir
 Return
 ButtonAbout:
 Gui, Destroy
@@ -392,7 +439,7 @@ Gui +LastFound
 GUI_ID:=WinExist()
 Gui, -Caption +AlwaysOnTop +Border
 Gui, Add, Picture, , thepitster.jpg
-Gui,Show,Autosize Hide,xmr-stak Helper v0.1.0
+Gui,Show,Autosize Hide,xmr-stak Helper v0.2.0
 DllCall("AnimateWindow",UInt,GUI_ID,Int,500,UInt,0xa0000)
 Sleep 3000
 DllCall("AnimateWindow",UInt,GUI_ID,Int,500,UInt,0x90000)
@@ -412,7 +459,7 @@ GuiShow:
 Gui, Margin, 0,0
 Gui +LastFound
 GUI_ID:=WinExist()
-Gui, Show, h515 w850, XMR-Stak Mining Helper v0.1.0
+Gui, Show, h515 w850, XMR-Stak Mining Helper v0.2.0
 DllCall("AnimateWindow",UInt,GUI_ID,UInt,750,UInt,0xa0000)
 Return
 #X::
@@ -482,47 +529,119 @@ Return
 
 +F5::
 SetWorkingDir %stakdir%
+if (nocpu1 = 1)
+{
+cpu1 := "--noCPU "
+}else{
+cpu1 :=
+}
+if (noamd1 = 1)
+{
+amd1 := "--noAMD "
+}else{
+amd1 :=
+}
+if (nonvidia1 = 1) 
+{
+nvidia1 := "--noNVIDIA "
+}else{
+nvidia1 :=
+}
 if (nicehash1 = 0)
 {
-Run, %stakdir%\xmr-stak.exe -i %htport% -o %pool1% -u %address1% -r %rigid1% -p %pword1% --currency %coin1%
+Run, %stakdir%\xmr-stak.exe %cpu1%%amd1%%nvidia1%-i %htport% -o %pool1% -u %address1% -r %rigid1% -p %pword1% --currency %coin1%
 msgbox, XMR-Stak Executed!
 }else{
-Run, %stakdir%\xmr-stak.exe -i %htport% -o %pool1% -u %address1% -r %rigid1% -p %pword1% --currency %coin1% --use-nicehash
+Run, %stakdir%\xmr-stak.exe %cpu1%%amd1%%nvidia1%-i %htport% -o %pool1% -u %address1% -r %rigid1% -p %pword1% --currency %coin1% --use-nicehash
 msgbox, XMR-Stak Using Nicehash Executed!
 }
 return
 
 +F6::
 SetWorkingDir %stakdir%
+if (nocpu2 = 1)
+{
+cpu2 := "--noCPU "
+}else{
+cpu2 :=
+}
+if (noamd2 = 1)
+{
+amd2 := "--noAMD "
+}else{
+amd2 :=
+}
+if (nonvidia2 = 1) 
+{
+nvidia2 := "--noNVIDIA "
+}else{
+nvidia2 :=
+}
 if (nicehash2 = 0)
 {
-Run, %stakdir%\xmr-stak.exe -i %htport% -o %pool2% -u %address2% -r %rigid2% -p %pword2% --currency %coin2%
+Run, %stakdir%\xmr-stak.exe %cpu2%%amd2%%nvidia2%-i %htport% -o %pool2% -u %address2% -r %rigid2% -p %pword2% --currency %coin2%
 msgbox, XMR-Stak Executed!
 }else{
-Run, %stakdir%\xmr-stak.exe -i %htport% -o %pool2% -u %address2% -r %rigid2% -p %pword2% --currency %coin2% --use-nicehash
+Run, %stakdir%\xmr-stak.exe %cpu2%%amd2%%nvidia2%-i %htport% -o %pool2% -u %address2% -r %rigid2% -p %pword2% --currency %coin2% --use-nicehash
 msgbox, XMR-Stak Using Nicehash Executed!
 }
 return
 
 +F7::
 SetWorkingDir %stakdir%
+if (nocpu3 = 1)
+{
+cpu3 := "--noCPU "
+}else{
+cpu3 :=
+}
+if (noamd3 = 1)
+{
+amd3 := "--noAMD "
+}else{
+amd3 :=
+}
+if (nonvidia3 = 1) 
+{
+nvidia3 := "--noNVIDIA "
+}else{
+nvidia3 :=
+}
 if (nicehash3 = 0)
 {
-Run, %stakdir%\xmr-stak.exe -i %htport% -o %pool3% -u %address3% -r %rigid3% -p %pword3% --currency %coin3%
+Run, %stakdir%\xmr-stak.exe %cpu3%%amd3%%nvidia3%-i %htport% -o %pool3% -u %address3% -r %rigid3% -p %pword3% --currency %coin3%
 msgbox, XMR-Stak Executed!
 }else{
-Run, %stakdir%\xmr-stak.exe -i %htport% -o %pool3% -u %address3% -r %rigid3% -p %pword3% --currency %coin3% --use-nicehash
+Run, %stakdir%\xmr-stak.exe %cpu3%%amd3%%nvidia3%-i %htport% -o %pool3% -u %address3% -r %rigid3% -p %pword3% --currency %coin3% --use-nicehash
 msgbox, XMR-Stak Using Nicehash Executed!
 }
 return
 
 +F8::
+if (nocpu4 = 1)
+{
+cpu4 := "--noCPU "
+}else{
+cpu4 :=
+}
+if (noamd4 = 1)
+{
+amd4 := "--noAMD "
+}else{
+amd4 :=
+}
+if (nonvidia4 = 1) 
+{
+nvidia4 := "--noNVIDIA "
+}else{
+nvidia4 :=
+}
 if (nicehash4 = 0)
 {
-Run, %stakdir%\xmr-stak.exe -i %htport% -o %pool4% -u %address4% -r %rigid4% -p %pword4% --currency %coin4%
+Run, %stakdir%\xmr-stak.exe %cpu4%%amd4%%nvidia4%-i %htport% -o %pool4% -u %address4% -r %rigid4% -p %pword4% --currency %coin4%
 msgbox, XMR-Stak Executed!
 }else{
-Run, %stakdir%\xmr-stak.exe -i %htport% -o %pool4% -u %address4% -r %rigid4% -p %pword4% --currency %coin4% --use-nicehash
+Run, %stakdir%\xmr-stak.exe %cpu4%%amd4%%nvidia4%-i %htport% -o %pool4% -u %address4% -r %rigid4% -p %pword4% --currency %coin4% --use-nicehash
 msgbox, XMR-Stak Using Nicehash Executed!
 }
 return
