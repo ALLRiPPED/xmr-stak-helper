@@ -1,4 +1,4 @@
-# XMR-Stak Helper v0.1.0
+# XMR-Stak Helper v0.2.0
 
 This was originally an idea I had for logging into the Silkroad Online server using the Bot369 bot cards to quickley login your game character(s) and your botcard in the presssing of just two keys.
 
@@ -21,6 +21,9 @@ When you first run the script/executable, it will create a `XMR-Stak-Helper.ini`
 
 
 # Changelog
+
+## v0.2.0
+Added the ability to pass `--noCPU`, `--noAMD`, & `--noNVIDIA` to the command line via check boxes for each mining pool.
 
 ## v0.1.0
 Changed the Hide/Unhide Gui Hotkey to `WindowsKey+X` which will both hide and unhide the Helper.
