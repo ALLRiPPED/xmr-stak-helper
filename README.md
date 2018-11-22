@@ -22,6 +22,9 @@ When you first run the script/executable, it will create a `XMR-Stak-Helper.ini`
 
 # Changelog
 
+## v0.4.0
+Seprated the http ports for each miner instance and added a field to set each port individually, that way you will not run into the errors about the port in use.
+
 ## v0.2.0
 Added the ability to pass `--noCPU`, `--noAMD`, & `--noNVIDIA` to the command line via check boxes for each mining pool.
 
