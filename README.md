@@ -15,9 +15,9 @@ When you first run the script/executable, it will create a `XMR-Stak-Helper.ini`
 
 # Screenshots
 
-<img src="https://i.imgur.com/TG1ByQ1.png">
-<img src="https://i.imgur.com/QfYYeB8.png">
-<img src="https://i.imgur.com/WYYsVjw.png">
+<img src="https://i.imgur.com/2cwsku1.png">
+<img src="https://i.imgur.com/hEOaTnA.png">
+<img src="https://i.imgur.com/Yk1CVHx.png">
 
 
 # Changelog
