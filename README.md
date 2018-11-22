@@ -1,4 +1,4 @@
-# XMR-Stak Helper v0.2.0
+# XMR-Stak Helper v0.4.0
 
 This was originally an idea I had for logging into the Silkroad Online server using the Bot369 bot cards to quickley login your game character(s) and your botcard in the presssing of just two keys.
 
