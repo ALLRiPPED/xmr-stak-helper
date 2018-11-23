@@ -1,4 +1,4 @@
-# XMR-Stak Helper v0.4.0
+# XMR-Stak Helper v0.5.0
 
 This was originally an idea I had for logging into the Silkroad Online server using the Bot369 bot cards to quickley login your game character(s) and your botcard in the presssing of just two keys.
 
@@ -21,6 +21,9 @@ When you first run the script/executable, it will create a `XMR-Stak-Helper.ini`
 
 
 # Changelog
+
+## v0.5.0
+Cleaned up the script. 
 
 ## v0.4.0
 Seprated the http ports for each miner instance and added a field to set each port individually, that way you will not run into the errors about the port in use.
