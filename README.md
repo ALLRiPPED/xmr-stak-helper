@@ -1,4 +1,4 @@
-# XMR-Stak Helper v0.5.0
+# XMR-Stak Helper v0.6.0
 
 This was originally an idea I had for logging into the Silkroad Online server using the Bot369 bot cards to quickley login your game character(s) and your botcard in the presssing of just two keys.
 
@@ -7,7 +7,8 @@ This was originally an idea I had for logging into the Silkroad Online server us
 If you want to run the script directly, you will first need to install [Autohotkey](https://autohotkey.com/).
 I do have compiled binaries, but be warned that the script and the executable binaries will most likely set off your virus scanner with false positives, you can read more about [AHK False Postive](https://www.google.com/search?num=100&client=firefox-b-1-ab&ei=wzTaW5OyLMT4sgWuhrEY&q=autohotkey+false+positive&oq=autohotkey+fal&gs_l=psy-ab.3.0.0l2j0i22i30l4j0i22i10i30j0i22i30l3.10920.14304..15055...0.0..0.222.1256.7j2j2......0....1..gws-wiz.......0i71j0i67j0i131i67j0i131.kR0ar0c7AEY)
 
-all you need to do from there is go to the <b>Pool Info</b> tab and set up your mining pool's options `Use Nicehash`, `Host/IP:Port`, `Wallet`, `Rig ID`, `Password`, `Currency` for the four pool spots provided also you can set `HTTP Port` plus in the <b>Directory Info</b> tab you can set the `XMR-Stak Executable Location` by pressing the `Browse` button which also sets the `XMR-Stak Folder`.
+All you need to do from there is go to the <b>Pool Info</b> tab and set up your mining pool's options `Use Nicehash`, `Host/IP:Port`, `Wallet`, `Rig ID`, `Password`, `Currency` for the four pool spots provided.
+Also you can set `HTTP Port` plus in the <b>Directory Info</b> tab you can set the `XMR-Stak Executable Location` by pressing the `Browse` button which also sets the `XMR-Stak Folder`.
 ## you will have to press the `OK` Buttons provided on both tabs every time you change something to save the changes!
 
 # Other Info
@@ -15,12 +16,16 @@ When you first run the script/executable, it will create a `XMR-Stak-Helper.ini`
 
 # Screenshots
 
-<img src="https://i.imgur.com/2cwsku1.png">
-<img src="https://i.imgur.com/hEOaTnA.png">
-<img src="https://i.imgur.com/Yk1CVHx.png">
+<img src="https://i.imgur.com/N9bD3Km.png">
+<img src="https://i.imgur.com/6VTHuFE.png">
+<img src="https://i.imgur.com/kscsC2D.png">
 
 
 # Changelog
+
+## v0.6.0
+Okay fixed a few discrepancies in the code and added a `Launch Pool #` Button for each pool.
+Reworked how the settings file `XMR-Stak-Helper.ini` get saved, now the script save every time you minimize, hide, or close the helper
 
 ## v0.5.0
 Cleaned up the script. 
