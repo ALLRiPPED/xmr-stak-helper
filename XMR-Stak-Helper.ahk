@@ -514,13 +514,13 @@ Return
 GuiEscape:
 GuiClose:
 	DllCall("AnimateWindow",UInt,GUI_ID,UInt,750,UInt,0x90000)
-	Goto, OK
 	Gui, Hide
+	Goto, OK
 Return
 GuiMinimize:
 	DllCall("AnimateWindow",UInt,GUI_ID,UInt,750,UInt,0x90000)
-	Goto, OK
 	Gui, Hide
+	Goto, OK
 Return
 GuiShow:
 	Gui, Margin, 0,0
@@ -530,7 +530,8 @@ GuiShow:
 	DllCall("AnimateWindow",UInt,GUI_ID,UInt,750,UInt,0xa0000)
 Return
 #X::
-	Gui % (MainGui:=!MainGui) ? "Hide" : "Show"
+	Gui % (MainGui:=!MainGui) ? "Hide" : "Show", x341 y133 h611 w887, XMR-Stak Mining Helper v0.6.0
+	Goto, OK
 return
 TrayReload:
 	Reload
@@ -658,7 +659,7 @@ LP1:
 	}
 	if (nicehash1 = 1)
 	{
-		nh1 := "--nicehash"
+		nh1 := "--use-nicehash"
 	}else{
 		nh1 :=
 	}	
@@ -688,7 +689,7 @@ LP2:
 	}
 	if (nicehash2 = 1)
 	{
-		nh2 := "--nicehash"
+		nh2 := "--use-nicehash"
 	}else{
 		nh2 :=
 	}	
@@ -718,7 +719,7 @@ LP3:
 	}
 	if (nicehash3 = 1)
 	{
-		nh3 := "--nicehash"
+		nh3 := "--use-nicehash"
 	}else{
 		nh3 :=
 	}	
@@ -748,7 +749,7 @@ LP4:
 	}
 	if (nicehash4 = 1)
 	{
-		nh4 := "--nicehash"
+		nh4 := "--use-nicehash"
 	}else{
 		nh4 :=
 	}	
