@@ -508,7 +508,6 @@ ButtonAbout:
 	Sleep 3000
 	DllCall("AnimateWindow",UInt,GUI_ID,Int,500,UInt,0x90000)
 	Gui, Destroy
-	Goto, OK
 	Goto, Main
 Return
 GuiEscape:
