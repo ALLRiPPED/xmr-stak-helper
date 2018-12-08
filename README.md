@@ -24,7 +24,7 @@ When you first run the script/executable, it will create a `XMR-Stak-Helper.ini`
 # Changelog
 
 ## v0.7.0
-Cleaned up the script more, and synced the version number to the stak helper.
+Cleaned up the script more and added the ability to use the `--openCLVendor NVIDIA` or `--openCLVendor AMD` in the command line.
 
 ## v0.6.0
 Okay fixed a few discrepancies in the code and added a `Launch Pool #` Button for each pool.
