@@ -1,4 +1,4 @@
-# XMR-Stak Helper v0.6.0
+# XMR-Stak Helper v0.7.0
 
 This was originally an idea I had for logging into the Silkroad Online server using the Bot369 bot cards to quickley login your game character(s) and your botcard in the presssing of just two keys.
 
@@ -16,12 +16,15 @@ When you first run the script/executable, it will create a `XMR-Stak-Helper.ini`
 
 # Screenshots
 
-<img src="https://i.imgur.com/N9bD3Km.png">
-<img src="https://i.imgur.com/6VTHuFE.png">
-<img src="https://i.imgur.com/kscsC2D.png">
+<img src="https://i.imgur.com/3UwEcDt.png">
+<img src="https://i.imgur.com/uC3aooe.png">
+<img src="https://i.imgur.com/iOPqIdz.png">
 
 
 # Changelog
+
+## v0.7.0
+Cleaned up the script more, and synced the version number to the stak helper.
 
 ## v0.6.0
 Okay fixed a few discrepancies in the code and added a `Launch Pool #` Button for each pool.
