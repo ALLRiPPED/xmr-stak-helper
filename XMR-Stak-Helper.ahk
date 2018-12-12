@@ -7,6 +7,8 @@ SetWorkingDir %A_ScriptDir%
 #SingleInstance force
 IfNotExist, thepitster.jpg
 	URLDownloadToFile, https://raw.githubusercontent.com/ALLRiPPED/xmr-stak-helper/master/thepitster.jpg, thepitster.jpg
+IfNotExist, arcryptologo.png
+	URLDownloadToFile, https://raw.githubusercontent.com/ALLRiPPED/xmrig-helper/master/arcryptologo.png, arcryptologo.png
 IfNotExist, app.ico
 	URLDownloadToFile, https://raw.githubusercontent.com/ALLRiPPED/xmr-stak-helper/master/app.ico, app.ico
 	if(FileExist(A_ScriptDir "\app.ico"))
