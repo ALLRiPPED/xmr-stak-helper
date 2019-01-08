@@ -23,11 +23,15 @@ When you first run the script/executable, it will create a `XMR-Stak-Helper.ini`
 <img src="https://i.imgur.com/1AOxnli.png">
 
 ## Button Effects
+
 Normal
+
 <img src="https://i.imgur.com/zmsozDF.png">
 Mouseover
+
 <img src="https://i.imgur.com/ndIo0Ne.png">
 Clicked/Pressed
+
 <img src="https://i.imgur.com/RgLPQZM.png">
 
 # Changelog
