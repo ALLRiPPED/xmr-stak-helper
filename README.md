@@ -18,10 +18,10 @@ Please see [XMR-Stak algorithm names](https://github.com/xmrig/xmrig-proxy/blob/
 When you first run the script/executable, it will create a `XMR-Stak-Helper.ini` file for all the pool and stak configurations to be save to.
 
 # Screenshots
-
 <img src="https://i.imgur.com/lzYdt7x.png">
 <img src="https://i.imgur.com/Fu4ac1e.png">
 <img src="https://i.imgur.com/1AOxnli.png">
+
 ## Button Effects
 Normal
 <img src="https://i.imgur.com/zmsozDF.png">
