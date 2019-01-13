@@ -1,4 +1,4 @@
-; XMR-Stak Mining Helper v1.0.0
+; XMR-Stak Mining Helper v1.0.1
 ; Just a little something I came up with to help with crypto mining with xmr-stak.
 ;#Warn
 #NoEnv
@@ -18,7 +18,7 @@ IfNotExist, app.ico
 	GUI_ID:=WinExist()
 	Gui, -Caption +AlwaysOnTop +Border
 	Gui, Add, Picture, , thepitster.jpg
-	Gui,Show, AutoSize Hide, XMR-Stak Mining Helper v1.0.0
+	Gui,Show, AutoSize Hide, XMR-Stak Mining Helper v1.0.1
 	DllCall("AnimateWindow",UInt,GUI_ID,Int,500,UInt,0xa0000)
 	Sleep 1000
 	DllCall("AnimateWindow",UInt,GUI_ID,Int,500,UInt,0x90000)
@@ -195,13 +195,13 @@ Main:
 	Opt4 := [0, 0xC0A0A0A0, , 0xC0606000]
 	If !ImageButton.Create(HXSHelper, Opt1, Opt2, Opt3, Opt4)
 		MsgBox, 0, ImageButton Error XSHelper, % ImageButton.LastError
-	Gui, Add, Button, x172 y490 w70 h30 hwndHVeronite, Veronite
+	Gui, Add, Button, x172 y490 w70 h30 hwndHMonkeytips, Monkeytips
 	Opt1 := [6, "Black", "Lime", "Black"]
 	Opt2 := [ , "Black", "Black", "Lime"]
 	Opt3 := {4: "Red"}
 	Opt4 := [0, 0xC0A0A0A0, , 0xC0606000]
-	If !ImageButton.Create(HVeronite, Opt1, Opt2, Opt3, Opt4)
-		MsgBox, 0, ImageButton Error Veronite, % ImageButton.LastError
+	If !ImageButton.Create(HMonkeytips, Opt1, Opt2, Opt3, Opt4)
+		MsgBox, 0, ImageButton Error Monkeytips, % ImageButton.LastError
 	Gui, Add, Button, x172 y450 w70 h30 hwndHXCA, X-CASH
 	Opt1 := [6, "Black", "Lime", "Black"]
 	Opt2 := [ , "Black", "Black", "Lime"]
@@ -209,13 +209,13 @@ Main:
 	Opt4 := [0, 0xC0A0A0A0, , 0xC0606000]
 	If !ImageButton.Create(HXCA, Opt1, Opt2, Opt3, Opt4)
 		MsgBox, 0, ImageButton Error X-CASH, % ImageButton.LastError
-	Gui, Add, Button, x172 y530 w70 h30 hwndHXaria, Xaria
+	Gui, Add, Button, x172 y530 w70 h30 hwndHCPACoin, CPA Coin
 	Opt1 := [6, "Black", "Lime", "Black"]
 	Opt2 := [ , "Black", "Black", "Lime"]
 	Opt3 := {4: "Red"}
 	Opt4 := [0, 0xC0A0A0A0, , 0xC0606000]
-	If !ImageButton.Create(HXaria, Opt1, Opt2, Opt3, Opt4)
-		MsgBox, 0, ImageButton Error Xaria, % ImageButton.LastError
+	If !ImageButton.Create(HCPACoin, Opt1, Opt2, Opt3, Opt4)
+		MsgBox, 0, ImageButton Error CPACoin, % ImageButton.LastError
 	Gui, Add, Button, x332 y450 w70 h30 hwndHAbout, About
 	Opt1 := [6, "Black", "Lime", "Black"]
 	Opt2 := [ , "Black", "Black", "Lime"]
@@ -417,7 +417,7 @@ Main:
 	Gui, Margin, 0,0
 	Gui +LastFound
 	GUI_ID:=WinExist()
-	Gui, Show, x341 y133 h611 w887, XMR-Stak Mining Helper v1.0.0
+	Gui, Show, x341 y133 h611 w887, XMR-Stak Mining Helper v1.0.1
 	DllCall("AnimateWindow",UInt,GUI_ID,UInt,750,UInt,0xa0000)
 	If (vender1 = 0) {
 		GuiControl, Disable, vamd1
@@ -742,7 +742,7 @@ ButtonAbout:
 	GUI_ID:=WinExist()
 	Gui, -Caption +AlwaysOnTop +Border
 	Gui, Add, Picture, , thepitster.jpg
-	Gui,Show,Autosize Hide,xmr-stak Helper v1.0.0
+	Gui,Show,Autosize Hide,xmr-stak Helper v1.0.1
 	DllCall("AnimateWindow",UInt,GUI_ID,Int,500,UInt,0xa0000)
 	Sleep 3000
 	DllCall("AnimateWindow",UInt,GUI_ID,Int,500,UInt,0x90000)
@@ -762,11 +762,11 @@ GuiShow:
 	Gui, Margin, 0,0
 	Gui +LastFound
 	GUI_ID:=WinExist()
-	Gui, Show, x341 y133 h611 w887, XMR-Stak Mining Helper v1.0.0
+	Gui, Show, x341 y133 h611 w887, XMR-Stak Mining Helper v1.0.1
 	DllCall("AnimateWindow",UInt,GUI_ID,UInt,750,UInt,0xa0000)
 Return
 #X::
-	Gui % (MainGui:=!MainGui) ? "Hide" : "Show", x341 y133 h611 w887, XMR-Stak Mining Helper v1.0.0
+	Gui % (MainGui:=!MainGui) ? "Hide" : "Show", x341 y133 h611 w887, XMR-Stak Mining Helper v1.0.1
 	Goto, OK
 return
 TrayReload:
@@ -790,11 +790,11 @@ Return
 ButtonMUTEX:
 	Run, https://mutexcurrency.io/
 Return
-ButtonXaria:
-	Run, http://xaria.xyz/
+ButtonCPACoin:
+	Run, https://cryptopay.org.za/
 Return
-ButtonVeronite:
-	Run, https://veronite.space/
+ButtonMonkeytips:
+	Run, https://monkeytips.top/
 Return
 ButtonARQMA:
 	Run, https://arqma.com/
